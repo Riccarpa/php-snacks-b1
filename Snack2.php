@@ -36,7 +36,7 @@ function get_media($alunni){
 
         $media = $voti_sum / count($alunno['voti']);
 
-        var_dump($media);
+        
         return $media;
     }
 }

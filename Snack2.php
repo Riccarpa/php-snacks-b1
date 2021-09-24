@@ -24,18 +24,40 @@ $alunni=[
     ],
 ];
 
-foreach($alunni as $alunno){
+function get_media($alunni){
+    foreach($alunni as $alunno){
 
-    $voti_sum = 0;
+        $voti_sum = 0;
 
-    foreach($alunno['voti'] as $voto){
+        foreach($alunno['voti'] as $voto){
 
-        $voti_sum += $voto;
+            $voti_sum += $voto;
+        }
+
+        $media = $voti_sum / count($alunno['voti']);
+
+        var_dump($media);
+        return $media;
     }
-
-    $media = $voti_sum / count($alunno['voti']);
-
-    var_dump($media);
 }
 
+$media = get_media($alunni);
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <?php foreach($alunni as $alunno){ ?>
+            <li><?php echo $alunno['nome'] . ' ' . $alunno['cognome'] .' '. $media  ?> </li>
+        <?php } ?>
+
+    </ul>
+</body>
+</html>
